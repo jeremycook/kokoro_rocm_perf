@@ -65,10 +65,6 @@ MIOpen(HIP): Warning [IsEnoughWorkspace] [EvaluateInvokers] Solver <GemmFwdRest>
 MIOpen and hipBLASLt logging
 
 ```sh
-export MIOPEN_ENABLE_LOGGING=1
-export MIOPEN_ENABLE_LOGGING_CMD=1
-export HIPBLASLT_LOG_MASK=32
-export HIPBLASLT_LOG_FILE="kokoro_tts_hipblaslt_log.txt"
-export TORCH_BLAS_PREFER_HIPBLASLT=1
+MIOPEN_ENABLE_LOGGING=1 MIOPEN_ENABLE_LOGGING_CMD=1 HIPBLASLT_LOG_MASK=32 HIPBLASLT_LOG_FILE="kokoro_tts_hipblaslt_log.txt" TORCH_BLAS_PREFER_HIPBLASLT=1 python run.py
 sort kokoro_tts_hipblaslt_log.txt | uniq -c | sort -nr > kokoro_tts_sorted_hipblaslt_log.txt
 ```
