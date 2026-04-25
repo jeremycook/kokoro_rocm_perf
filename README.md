@@ -23,25 +23,30 @@ source rocm_stable.venv/bin/activate
 time python run.py
 time python run.py
 deactivate
+
+bash setup_cuda_stable.sh
+source cuda_stable.venv/bin/activate
+time python run.py
+time python run.py
+deactivate
 ```
 
 My 2nd run.py times on AMD Radeon AI Pro R9700 and AMD Ryzen 7 5700G with iGPU disabled in BIOS
 
 ```
+cuda_stable.venv
+real    0m13.469s
+01:00.0 VGA compatible controller: NVIDIA Corporation TU116M [GeForce GTX 1660 Ti Mobile] (rev a1)
+
 cpu.venv
-real    0m12.148s
-user    0m38.368s
-sys     0m9.426s
+real    0m51.781s
+AMD Ryzen 7 4800H with Radeon Graphics
 
 rocm_nightly.venv
 real    0m21.597s
-user    0m23.808s
-sys     0m13.301s
 
 rocm_stable.venv
 real    0m20.754s
-user    0m20.923s
-sys     0m3.742s
 ```
 
 I get these warnings in the ROCM environments:
