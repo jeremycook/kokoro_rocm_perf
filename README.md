@@ -31,25 +31,31 @@ time python run.py
 deactivate
 ```
 
-My 2nd run.py times on AMD Radeon AI Pro R9700 and AMD Ryzen 7 5700G with iGPU disabled in BIOS
+My 2nd run.py times. The CUDA and CPU times are from the same laptop.
 
 ```
 cuda_stable.venv
-real    0m13.469s
 01:00.0 VGA compatible controller: NVIDIA Corporation TU116M [GeForce GTX 1660 Ti Mobile] (rev a1)
+real    0m13.469s
 
 cpu.venv
-real    0m51.781s
 AMD Ryzen 7 4800H with Radeon Graphics
+real    0m51.781s
 
-rocm_nightly.venv
-real    0m21.597s
+rocm_nightly.venv with MIOPEN_FIND_MODE=fast
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 48 [Radeon AI PRO R9700] (rev c0)
+real    0m53.814s
+
+rocm_stable.venv with MIOPEN_FIND_MODE=fast
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 48 [Radeon AI PRO R9700] (rev c0)
+real    0m53.889s
 
 rocm_stable.venv
-real    0m20.754s
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 48 [Radeon AI PRO R9700] (rev c0)
+real    2m16.069s
 ```
 
-I get these warnings in the ROCM environments:
+I get these warnings in the ROCM environments without MIOPEN_FIND_MODE=fast:
 
 ```
 MIOpen(HIP): Warning [IsEnoughWorkspace] [GetSolutionsFallback WTI] Solver <GemmFwdRest>, workspace required: 156304896, provided ptr: 0 size: 0
